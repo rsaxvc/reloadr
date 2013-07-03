@@ -1,0 +1,17 @@
+Create-an-account or temporary-cookie-storage
+
+User maintains a list of supplies
+	types of powder
+	types of shot
+	hulls available
+	wads available
+
+User is presented with a list of recipes.
+From here, a user can narrow the search
+	by gauge
+	by load
+
+Recipe
+	consists of required ingredients
+	maybe upvotes/downvotes for those who try it?
+	user comments?

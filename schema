@@ -1,0 +1,15 @@
+recipe:
+	powder-type
+	powder-amount
+	shot-type
+	shot-amount(weight)
+	wad
+	hull
+	est.fps
+	est.pressure
+
+user:
+	list of shot
+	list of powders
+	list of hulls
+	list of wads
