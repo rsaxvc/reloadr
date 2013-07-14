@@ -11,6 +11,19 @@ class Gauge(models.Model):
 	def __unicode__(self):
 		return str(self.size) + ' Gauge'
 
+class PrimerSize(models.Model):
+	size = models.CharField(max_length=20)
+	def __unicode__(self):
+		return str(self.size) + '"'	
+
+class Primer(models.Model):
+	manufacturer = models.ForeignKey(Manufacturer)
+	size = models.ForeignKey(PrimerSize)
+	name = models.CharField(max_length=20)
+	url = models.CharField(max_length=2048)
+	def __unicode__(self):
+		return str(self.size)
+
 class Wad(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
 	gauge = models.ForeignKey(Gauge)
@@ -47,13 +60,16 @@ class Shot(models.Model):
 
 class Recipe(models.Model):
 	powder = models.ForeignKey(Powder)
-	powderWeight = models.FloatField()
-	estPressure = models.IntegerField()
-	estVelocity = models.IntegerField()
 	shot = models.ForeignKey(Shot)
 	hull = models.ForeignKey(Hull)
 	hullLength = models.ForeignKey(HullLength)
 	gauge = models.ForeignKey(Gauge)
+	primer = models.ForeignKey(Primer)
+
+	powderWeight = models.FloatField()
+	estPressure = models.IntegerField()
+	estVelocity = models.IntegerField()
+
 	url = models.CharField(max_length=2048)
 	def __unicode__(self):
 		return str(self.powderWeight)+str(self.powder)+str(self.gauge)+str(self.hullLength)+str(self.hull)
