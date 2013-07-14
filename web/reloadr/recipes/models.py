@@ -6,17 +6,18 @@ class Manufacturer(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class Wad(models.Model):
-	manufacturer = models.ForeignKey(Manufacturer)
-	name = models.CharField(max_length=200)
-	url = models.CharField(max_length=2048)
-	def __unicode__(self):
-		return unicode(self.manufacturer) + ' ' + self.name
-
 class Gauge(models.Model):
 	size = models.CharField(max_length=20)
 	def __unicode__(self):
 		return str(self.size)
+
+class Wad(models.Model):
+	manufacturer = models.ForeignKey(Manufacturer)
+	gauge = models.ForeignKey(Gauge)
+	name = models.CharField(max_length=200)
+	url = models.CharField(max_length=2048)
+	def __unicode__(self):
+		return unicode(self.manufacturer) + ' ' + self.name
 
 class HullLength(models.Model):
 	length = models.CharField(max_length=20)
@@ -26,6 +27,7 @@ class HullLength(models.Model):
 class Hull(models.Model):
 	length = models.ForeignKey(HullLength)
 	manufacturer = models.ForeignKey(Manufacturer)
+	gauge = models.ForeignKey(Gauge)
 	name = models.CharField(max_length=200)
 	url = models.CharField(max_length=2048)
 	def __unicode__(self):
