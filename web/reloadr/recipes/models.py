@@ -53,14 +53,20 @@ class Powder(models.Model):
 	def __unicode__(self):
 		return unicode(self.manufacturer) + ' ' + self.name
 
-class Shot(models.Model):
+class ShotWeight(models.Model):
 	weight = models.CharField(max_length=200)
 	def __unicode__(self):
-		return self.weight
+		return self.weight + ' oz';
+
+class ShotType(models.Model):
+	type = models.CharField(max_length=200)
+	def __unicode__(self):
+		return self.type	
 
 class Recipe(models.Model):
 	powder = models.ForeignKey(Powder)
-	shot = models.ForeignKey(Shot)
+	shotType = models.ForeignKey(ShotType)
+	shotWeight = models.ForeignKey(ShotWeight)
 	hull = models.ForeignKey(Hull)
 	hullLength = models.ForeignKey(HullLength)
 	gauge = models.ForeignKey(Gauge)

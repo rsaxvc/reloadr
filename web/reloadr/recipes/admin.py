@@ -9,6 +9,7 @@ admin.site.register(recipes.models.Powder)
 admin.site.register(recipes.models.Primer)
 admin.site.register(recipes.models.PrimerSize)
 admin.site.register(recipes.models.Recipe)
-admin.site.register(recipes.models.Shot)
+admin.site.register(recipes.models.ShotType)
+admin.site.register(recipes.models.ShotWeight)
 admin.site.register(recipes.models.Wad)
 
