@@ -9,7 +9,7 @@ class Manufacturer(models.Model):
 class Gauge(models.Model):
 	size = models.CharField(max_length=20)
 	def __unicode__(self):
-		return str(self.size)
+		return str(self.size) + ' Gauge'
 
 class Wad(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
@@ -31,7 +31,7 @@ class Hull(models.Model):
 	name = models.CharField(max_length=200)
 	url = models.CharField(max_length=2048)
 	def __unicode__(self):
-		return unicode(self.length) + ' ' + self.name
+		return unicode( self.manufacturer ) + ' ' + unicode(self.gauge) + ' ' + unicode(self.length) + ' ' + self.name
 
 class Powder(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
