@@ -38,8 +38,8 @@ class HullLength(models.Model):
 		return self.length + ' Inch'
 
 class Hull(models.Model):
-	length = models.ForeignKey(HullLength)
 	manufacturer = models.ForeignKey(Manufacturer)
+	length = models.ForeignKey(HullLength)
 	gauge = models.ForeignKey(Gauge)
 	name = models.CharField(max_length=200)
 	url = models.CharField(max_length=2048)
