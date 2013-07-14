@@ -22,7 +22,7 @@ class Primer(models.Model):
 	name = models.CharField(max_length=20)
 	url = models.CharField(max_length=2048)
 	def __unicode__(self):
-		return str(self.size)
+		return unicode(self.manufacturer) + ' ' + unicode(self.name)
 
 class Wad(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
