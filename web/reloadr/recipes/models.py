@@ -71,6 +71,7 @@ class Recipe(models.Model):
 	hullLength = models.ForeignKey(HullLength)
 	gauge = models.ForeignKey(Gauge)
 	primer = models.ForeignKey(Primer)
+	wad = models.ForeignKey(Wad)
 
 	powderWeight = models.FloatField()
 	estPressure = models.IntegerField()
