@@ -1,0 +1,32 @@
+{% if recipe_list %}
+	<table border="1">
+	<tr>
+		<td>Gauge</td>
+		<td>Powder</td>
+		<td>Wad</td>
+		<td>ShotType</td>
+		<td>ShotWeight</td>
+		<td>Primer</td>
+		<td>estPressure</td>
+		<td>estVelocity</td>
+	</td>
+
+	{% for recipe in recipe_list.all %}
+		<tr>
+			<td>{{ recipe.gauge }}</td>
+			<td>{{ recipe.powder }}</td>
+			<td>{{ recipe.wad }}</td>
+			<td>{{ recipe.shotType }}</td>
+			<td>{{ recipe.shotWeight }}</td>
+			<td>{{ recipe.primer }}</td>
+			<td>{{ recipe.estPressure }}</td>
+			<td>{{ recipe.estVelocity }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No recipes are available.</p>
+{% endif %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
