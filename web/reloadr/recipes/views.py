@@ -6,7 +6,7 @@ from django.views import generic
 
 from django.utils import timezone
 
-from recipes.models import Powder,Recipe,Hull,Wad
+from recipes.models import Powder,Recipe,Hull,Wad,Primer
 
 import operator
 
@@ -20,6 +20,7 @@ class IndexView(generic.ListView):
 		retn={}
 		retn['Hull'] = Hull.objects.order_by('manufacturer','gauge')
 		retn['Recipe'] = Recipe.objects.order_by('gauge')
+		retn['Primer'] = Primer.objects.order_by('manufacturer')
 		retn['Powder'] = Powder.objects.order_by('manufacturer')
 		retn['Wad'] = Wad.objects.order_by('manufacturer')
 
