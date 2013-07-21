@@ -1,4 +1,48 @@
-{% if recipe_list %}
+<table>
+	<tr>
+		<td align="center">Hulls</td>
+		<td align="center">Powder</td>
+		<td align="center">Wads</td>
+	</tr><tr><td>
+
+	{% if table.Hull %}
+	<select multiple size=10 name=pv7>
+		{% for hull in table.Hull.all %}
+			<option value="{{hull}}">{{hull}}</option>
+		{% endfor %}
+	</select>
+	{% else %}
+		No Hulls Available
+	{% endif %}
+
+	</td><td>
+
+	{% if table.Powder %}
+	<select multiple size=10 name=pv7>
+		{% for powder in table.Powder.all %}
+			<option value="{{powder}}">{{powder}}</option>
+		{% endfor %}
+	</select>
+	{% else %}
+		No Powders Available
+	{% endif %}
+
+	</td><td>
+
+	{% if table.Wad %}
+	<select multiple size=10 name=pv7>
+		{% for wad in table.Wad.all %}
+			<option value="{{wad}}">{{wad}}</option>
+		{% endfor %}
+	</select>
+	{% else %}
+		No Wads Available
+	{% endif %}
+
+	</td></tr>
+</table>
+
+{% if table.Recipe %}
 	<table border="1">
 	<tr>
 		<td>Gauge</td>
@@ -11,7 +55,7 @@
 		<td>estVelocity</td>
 	</td>
 
-	{% for recipe in recipe_list.all %}
+	{% for recipe in table.Recipe.all %}
 		<tr>
 			<td>{{ recipe.gauge }}</td>
 			<td>{{ recipe.powder }}</td>

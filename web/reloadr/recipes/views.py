@@ -6,16 +6,24 @@ from django.views import generic
 
 from django.utils import timezone
 
-from recipes.models import Recipe
+from recipes.models import Powder,Recipe,Hull,Wad
+
+import operator
 
 # Create your views here.
 class IndexView(generic.ListView):
 	template_name = 'recipes/index.html'
-	context_object_name = 'recipe_list'
+	context_object_name = 'table'
 
 	def get_queryset(self):
-		"""Return the last five published recipes."""
-		return Recipe.objects
+		"""Get everything needed for index page"""
+		retn={}
+		retn['Hull'] = Hull.objects.order_by('manufacturer','gauge')
+		retn['Recipe'] = Recipe.objects.order_by('gauge')
+		retn['Powder'] = Powder.objects.order_by('manufacturer')
+		retn['Wad'] = Wad.objects.order_by('manufacturer')
+
+		return retn;
 #		return Recipe.objects.order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
