@@ -1,5 +1,6 @@
 <table>
 	<tr>
+		<td align="center">Gauge</td>
 		<td align="center">Hulls</td>
 		<td align="center">Powder</td>
 		<td align="center">Wads</td>
@@ -7,6 +8,17 @@
 	</tr>
 	<tr><form method=get action="/search?"><td>
 
+		{% if table.Gauge %}
+		<select multiple size=10 name=pv7>
+			{% for gauge in table.Gauge.all %}
+				<option value="{{gauge}}">{{gauge}}</option>
+			{% endfor %}
+		</select>
+		{% else %}
+			No Gauges Available
+		{% endif %}
+
+		</td><td>
 		{% if table.Hull %}
 		<select multiple size=10 name=pv7>
 			{% for hull in table.Hull.all %}

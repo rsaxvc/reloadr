@@ -6,7 +6,7 @@ from django.views import generic
 
 from django.utils import timezone
 
-from recipes.models import Powder,Recipe,Hull,Wad,Primer
+from recipes.models import Powder,Recipe,Hull,Wad,Primer,Gauge
 
 import operator
 
@@ -18,11 +18,12 @@ class IndexView(generic.ListView):
 	def get_queryset(self):
 		"""Get everything needed for index page"""
 		retn={}
-		retn['Hull'] = Hull.objects.order_by('manufacturer','gauge')
+		retn['Gauge']  = Gauge.objects.order_by('size')
+		retn['Hull']   = Hull.objects.order_by('manufacturer','gauge')
 		retn['Recipe'] = Recipe.objects.order_by('gauge')
 		retn['Primer'] = Primer.objects.order_by('manufacturer')
-		retn['Powder'] = Powder.objects.order_by('manufacturer')
-		retn['Wad'] = Wad.objects.order_by('manufacturer')
+		retn['Powder'] = Powder.objects.order_by('manufacturer','name')
+		retn['Wad']    = Wad.objects.order_by('manufacturer','name')
 
 		return retn;
 #		return Recipe.objects.order_by('-pub_date')[:5]
