@@ -11,7 +11,7 @@
 		{% if table.Gauge %}
 		<select multiple size=10 name=pv7>
 			{% for gauge in table.Gauge.all %}
-				<option value="{{gauge}}">{{gauge}}</option>
+				<option value="{{gauge.id}}">{{gauge}}</option>
 			{% endfor %}
 		</select>
 		{% else %}
@@ -22,7 +22,7 @@
 		{% if table.Hull %}
 		<select multiple size=10 name=pv7>
 			{% for hull in table.Hull.all %}
-				<option value="{{hull}}">{{hull}}</option>
+				<option value="{{hull.id}}">{{hull}}</option>
 			{% endfor %}
 		</select>
 		{% else %}
@@ -34,7 +34,7 @@
 		{% if table.Powder %}
 		<select multiple size=10 name=pv7>
 			{% for powder in table.Powder.all %}
-				<option value="{{powder}}">{{powder}}</option>
+				<option value="{{powder.id}}">{{powder}}</option>
 			{% endfor %}
 		</select>
 		{% else %}
@@ -46,7 +46,7 @@
 		{% if table.Wad %}
 		<select multiple size=10 name=pv7>
 			{% for wad in table.Wad.all %}
-				<option value="{{wad}}">{{wad}}</option>
+				<option value="{{wad.id}}">{{wad}}</option>
 			{% endfor %}
 		</select>
 		{% else %}
@@ -58,7 +58,7 @@
 		{% if table.Primer %}
 		<select multiple size=10 name=pv7>
 			{% for primer in table.Primer.all %}
-				<option value="{{primer}}">{{primer}}</option>
+				<option value="{{primer.id}}">{{primer}}</option>
 			{% endfor %}
 		</select>
 		{% else %}
