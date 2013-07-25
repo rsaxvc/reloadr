@@ -20,13 +20,20 @@ class IndexView(generic.ListView):
 		retn={}
 		retn['Gauge']  = Gauge.objects.order_by('size')
 		retn['Hull']   = Hull.objects.order_by('manufacturer','gauge')
-		retn['Recipe'] = Recipe.objects.order_by('gauge')
 		retn['Primer'] = Primer.objects.order_by('manufacturer')
 		retn['Powder'] = Powder.objects.order_by('manufacturer','name')
+
+		# Get the q GET parameter
+		wadfilter = self.request.GET.getlist('wad')
+		wadfilter = [ int(x) for x in wadfilter ]
 		retn['Wad']    = Wad.objects.order_by('manufacturer','name')
 
+		if len(wadfilter)>0:
+			retn['Recipe'] = Recipe.objects.filter(wad__in=wadfilter).order_by('gauge','powder')
+		else:
+			retn['Recipe'] = Recipe.objects.order_by('gauge','powder')
+
 		return retn;
-#		return Recipe.objects.order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
     model = Recipe
