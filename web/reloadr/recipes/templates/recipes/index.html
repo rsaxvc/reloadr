@@ -9,7 +9,7 @@
 	<tr><form method=get action="/search?"><td>
 
 		{% if table.Gauge %}
-		<select multiple size=10 name=pv7>
+		<select multiple size=10 name=gauge>
 			{% for gauge in table.Gauge.all %}
 				<option value="{{gauge.id}}">{{gauge}}</option>
 			{% endfor %}
@@ -20,7 +20,7 @@
 
 		</td><td>
 		{% if table.Hull %}
-		<select multiple size=10 name=pv7>
+		<select multiple size=10 name=hull>
 			{% for hull in table.Hull.all %}
 				<option value="{{hull.id}}">{{hull}}</option>
 			{% endfor %}
@@ -32,7 +32,7 @@
 		</td><td>
 
 		{% if table.Powder %}
-		<select multiple size=10 name=pv7>
+		<select multiple size=10 name=powder>
 			{% for powder in table.Powder.all %}
 				<option value="{{powder.id}}">{{powder}}</option>
 			{% endfor %}
@@ -44,7 +44,7 @@
 		</td><td>
 
 		{% if table.Wad %}
-		<select multiple size=10 name=pv7>
+		<select multiple size=10 name=wad>
 			{% for wad in table.Wad.all %}
 				<option value="{{wad.id}}">{{wad}}</option>
 			{% endfor %}
@@ -56,7 +56,7 @@
 		</td><td>
 
 		{% if table.Primer %}
-		<select multiple size=10 name=pv7>
+		<select multiple size=10 name=primer>
 			{% for primer in table.Primer.all %}
 				<option value="{{primer.id}}">{{primer}}</option>
 			{% endfor %}
