@@ -22,12 +22,10 @@ class IndexView(generic.ListView):
 		retn['Hull']   = Hull.objects.order_by('manufacturer','gauge')
 		retn['Primer'] = Primer.objects.order_by('manufacturer')
 		retn['Powder'] = Powder.objects.order_by('manufacturer','name')
-
-		# Get the q GET parameter
-		wadfilter = self.request.GET.getlist('wad')
-		wadfilter = [ int(x) for x in wadfilter ]
 		retn['Wad']    = Wad.objects.order_by('manufacturer','name')
 
+		wadfilter = self.request.GET.getlist('wad')
+		wadfilter = [ int(x) for x in wadfilter ]
 		if len(wadfilter)>0:
 			retn['Recipe'] = Recipe.objects.filter(wad__in=wadfilter).order_by('gauge','powder')
 		else:
