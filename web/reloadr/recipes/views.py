@@ -10,6 +10,9 @@ from recipes.models import Powder,Recipe,Hull,Wad,Primer,Gauge
 
 import operator
 
+def intmap( list ):
+	return [ int(x) for x in list ]
+
 # Create your views here.
 class IndexView(generic.ListView):
 	template_name = 'recipes/index.html'
@@ -18,14 +21,27 @@ class IndexView(generic.ListView):
 	def get_queryset(self):
 		"""Get everything needed for index page"""
 		retn={}
-		retn['Gauge']  = Gauge.objects.order_by('size')
-		retn['Hull']   = Hull.objects.order_by('manufacturer','gauge')
+
+		gaugefilter = intmap( self.request.GET.getlist('gauge') )
+
+		wadfilter = intmap( self.request.GET.getlist('wad') )
+
+		hullfilter = intmap( self.request.GET.getlist('hull') )
+
+		if len(gaugefilter) > 0:
+			retn['Gauge'] = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
+		else:
+			retn['Gauge'] = Gauge.objects.order_by('size')
+
+		if len(gaugefilter) > 0:
+			retn['Hull']   = Hull.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','gauge')
+		else:
+			retn['Hull']   = Hull.objects.order_by('manufacturer','gauge')
+
 		retn['Primer'] = Primer.objects.order_by('manufacturer')
 		retn['Powder'] = Powder.objects.order_by('manufacturer','name')
 		retn['Wad']    = Wad.objects.order_by('manufacturer','name')
 
-		wadfilter = self.request.GET.getlist('wad')
-		wadfilter = [ int(x) for x in wadfilter ]
 		if len(wadfilter)>0:
 			retn['Recipe'] = Recipe.objects.filter(wad__in=wadfilter).order_by('gauge','powder')
 		else:
