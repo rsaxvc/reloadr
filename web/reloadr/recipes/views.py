@@ -10,42 +10,34 @@ from recipes.models import Powder,Recipe,Hull,Wad,Primer,Gauge
 
 import operator
 
-def intmap( list ):
-	return [ int(x) for x in list ]
-
 # Create your views here.
 class IndexView(generic.ListView):
 	template_name = 'recipes/index.html'
 	context_object_name = 'table'
 
+	def intmap( self, name, table ):
+		list = [ int(x) for x in self.request.GET.getlist( name ) ]
+		if( len( list ) > 0 ):
+			return list
+		return [ int(x.id) for x in table.objects.all() ]
+
+
 	def get_queryset(self):
 		"""Get everything needed for index page"""
 		retn={}
 
-		gaugefilter  = intmap( self.request.GET.getlist('gauge') )
-		wadfilter    = intmap( self.request.GET.getlist('wad') )
-		hullfilter   = intmap( self.request.GET.getlist('hull') )
-		primerfilter = intmap( self.request.GET.getlist('primer') )
-		powderfilter = intmap( self.request.GET.getlist('powder') )
+		gaugefilter  = self.intmap( 'gauge',  Gauge )
+		wadfilter    = self.intmap( 'wad',    Wad )
+		hullfilter   = self.intmap( 'hull',   Hull )
+		primerfilter = self.intmap( 'primer', Primer )
+		powderfilter = self.intmap( 'powder', Powder )
 
-		if len(gaugefilter) > 0:
-			retn['Gauge'] = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
-		else:
-			retn['Gauge'] = Gauge.objects.order_by('size')
-
-		if len(gaugefilter) > 0:
-			retn['Hull']   = Hull.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','gauge')
-		else:
-			retn['Hull']   = Hull.objects.order_by('manufacturer','gauge')
-
+		retn['Gauge'] = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
+		retn['Hull']   = Hull.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','gauge')
 		retn['Primer'] = Primer.objects.order_by('manufacturer')
 		retn['Powder'] = Powder.objects.order_by('manufacturer','name')
 		retn['Wad']    = Wad.objects.order_by('manufacturer','name')
-
-		if len(wadfilter)>0:
-			retn['Recipe'] = Recipe.objects.filter(wad__in=wadfilter).order_by('gauge','powder')
-		else:
-			retn['Recipe'] = Recipe.objects.order_by('gauge','powder')
+		retn['Recipe'] = Recipe.objects.filter(wad__in=wadfilter).order_by('gauge','powder')
 
 		return retn;
 
