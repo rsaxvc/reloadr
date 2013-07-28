@@ -2,7 +2,7 @@ from django.db import models
 
 class Manufacturer(models.Model):
 	name = models.CharField(max_length=200)
-	url = models.CharField(max_length=2048)
+	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return self.name
 
@@ -14,7 +14,7 @@ class Gauge(models.Model):
 class Primer(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
 	name = models.CharField(max_length=20)
-	url = models.CharField(max_length=2048)
+	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return unicode(self.manufacturer) + ' ' + unicode(self.name)
 
@@ -22,7 +22,7 @@ class Wad(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
 	gauge = models.ForeignKey(Gauge)
 	name = models.CharField(max_length=200)
-	url = models.CharField(max_length=2048)
+	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return unicode(self.manufacturer) + ' ' + self.name
 
@@ -36,14 +36,14 @@ class Hull(models.Model):
 	length = models.ForeignKey(Length)
 	gauge = models.ForeignKey(Gauge)
 	name = models.CharField(max_length=200)
-	url = models.CharField(max_length=2048)
+	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return unicode( self.manufacturer ) + ' ' + unicode(self.gauge) + ' ' + unicode(self.length) + ' ' + self.name
 
 class Powder(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
 	name = models.CharField(max_length=200)
-	url = models.CharField(max_length=2048)
+	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return unicode(self.manufacturer) + ' ' + self.name
 
@@ -71,6 +71,6 @@ class Recipe(models.Model):
 	estPressure = models.IntegerField()
 	estVelocity = models.IntegerField()
 
-	url = models.CharField(max_length=2048)
+	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return str(self.powderWeight)+str(self.powder)+str(self.gauge)+str(self.length)+str(self.hull)
