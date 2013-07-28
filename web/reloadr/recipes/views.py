@@ -22,11 +22,11 @@ class IndexView(generic.ListView):
 		"""Get everything needed for index page"""
 		retn={}
 
-		gaugefilter = intmap( self.request.GET.getlist('gauge') )
-
-		wadfilter = intmap( self.request.GET.getlist('wad') )
-
-		hullfilter = intmap( self.request.GET.getlist('hull') )
+		gaugefilter  = intmap( self.request.GET.getlist('gauge') )
+		wadfilter    = intmap( self.request.GET.getlist('wad') )
+		hullfilter   = intmap( self.request.GET.getlist('hull') )
+		primerfilter = intmap( self.request.GET.getlist('primer') )
+		powderfilter = intmap( self.request.GET.getlist('powder') )
 
 		if len(gaugefilter) > 0:
 			retn['Gauge'] = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
