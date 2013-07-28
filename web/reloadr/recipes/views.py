@@ -37,7 +37,13 @@ class IndexView(generic.ListView):
 		retn['Primer']     = Primer.objects.order_by('manufacturer')
 		retn['Powder']     = Powder.objects.order_by('manufacturer','name')
 		retn['Wad']        = Wad.objects.order_by('manufacturer','name')
-		retn['Recipe']     = Recipe.objects.filter(wad__in=wadfilter).order_by('gauge','powder')
+		retn['Recipe']     = Recipe.objects.filter(
+			hull__in=hullfilter,
+			hullLength__in=hulllengthfilter,
+			primer__in=primerfilter,
+			powder__in=powderfilter
+			wad__in=wadfilter,
+			).order_by('gauge','powder')
 
 		return retn;
 
