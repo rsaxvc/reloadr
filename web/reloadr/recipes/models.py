@@ -1,15 +1,15 @@
 from django.db import models
 
 class Manufacturer(models.Model):
-	name = models.CharField(max_length=200)
+	name = models.CharField(max_length=200,primary_key=True)
 	url = models.CharField(max_length=2048,blank=True)
 	def __unicode__(self):
 		return self.name
 
 class Gauge(models.Model):
-	size = models.CharField(max_length=20)
+	gauge = models.CharField(max_length=20,primary_key=True)
 	def __unicode__(self):
-		return str(self.size) + ' Gauge'
+		return str(self.gauge) + ' Gauge'
 
 class Primer(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
@@ -27,7 +27,7 @@ class Wad(models.Model):
 		return unicode(self.manufacturer) + ' ' + self.name
 
 class Length(models.Model):
-	length = models.CharField(max_length=20)
+	length = models.CharField(max_length=20,primary_key=True)
 	def __unicode__(self):
 		return self.length + ' Inch'
 
