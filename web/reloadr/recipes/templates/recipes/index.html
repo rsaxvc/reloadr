@@ -1,6 +1,7 @@
 <table>
 	<tr>
 		<td align="center">Gauge</td>
+		<td align="center">HullLength</td>
 		<td align="center">Hulls</td>
 		<td align="center">Powder</td>
 		<td align="center">Wads</td>
@@ -19,6 +20,19 @@
 		{% endif %}
 
 		</td><td>
+
+		{% if table.HullLength %}
+		<select multiple size=10 name=hulllength>
+			{% for length in table.HullLength.all %}
+				<option value="{{length.id}}">{{length}}</option>
+			{% endfor %}
+		</select>
+		{% else %}
+			No Lengths Available
+		{% endif %}
+
+		</td><td>
+
 		{% if table.Hull %}
 		<select multiple size=10 name=hull>
 			{% for hull in table.Hull.all %}
