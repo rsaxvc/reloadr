@@ -1,7 +1,7 @@
 <table>
 	<tr>
 		<td align="center">Gauge</td>
-		<td align="center">HullLength</td>
+		<td align="center">Length</td>
 		<td align="center">Hulls</td>
 		<td align="center">Wads</td>
 		<td align="center">Powder</td>
@@ -21,9 +21,9 @@
 
 		</td><td>
 
-		{% if table.HullLength %}
-		<select multiple size=10 name=hulllength>
-			{% for length in table.HullLength.all %}
+		{% if table.Length %}
+		<select multiple size=10 name=length>
+			{% for length in table.Length.all %}
 				<option value="{{length.id}}">{{length}}</option>
 			{% endfor %}
 		</select>

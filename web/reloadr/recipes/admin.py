@@ -2,7 +2,7 @@ from django.contrib import admin
 import recipes.models
 
 admin.site.register(recipes.models.Gauge)
-admin.site.register(recipes.models.HullLength)
+admin.site.register(recipes.models.Length)
 admin.site.register(recipes.models.Hull)
 admin.site.register(recipes.models.Manufacturer)
 admin.site.register(recipes.models.Powder)

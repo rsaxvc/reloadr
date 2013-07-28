@@ -32,14 +32,14 @@ class Wad(models.Model):
 	def __unicode__(self):
 		return unicode(self.manufacturer) + ' ' + self.name
 
-class HullLength(models.Model):
+class Length(models.Model):
 	length = models.CharField(max_length=20)
 	def __unicode__(self):
 		return self.length + ' Inch'
 
 class Hull(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
-	length = models.ForeignKey(HullLength)
+	length = models.ForeignKey(Length)
 	gauge = models.ForeignKey(Gauge)
 	name = models.CharField(max_length=200)
 	url = models.CharField(max_length=2048)
@@ -68,7 +68,7 @@ class Recipe(models.Model):
 	shotType = models.ForeignKey(ShotType)
 	shotWeight = models.ForeignKey(ShotWeight)
 	hull = models.ForeignKey(Hull)
-	hullLength = models.ForeignKey(HullLength)
+	length = models.ForeignKey(Length)
 	gauge = models.ForeignKey(Gauge)
 	primer = models.ForeignKey(Primer)
 	wad = models.ForeignKey(Wad)
@@ -79,4 +79,4 @@ class Recipe(models.Model):
 
 	url = models.CharField(max_length=2048)
 	def __unicode__(self):
-		return str(self.powderWeight)+str(self.powder)+str(self.gauge)+str(self.hullLength)+str(self.hull)
+		return str(self.powderWeight)+str(self.powder)+str(self.gauge)+str(self.length)+str(self.hull)

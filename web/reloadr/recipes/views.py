@@ -6,7 +6,7 @@ from django.views import generic
 
 from django.utils import timezone
 
-from recipes.models import Powder,Recipe,Hull,HullLength,Wad,Primer,Gauge
+from recipes.models import Powder,Recipe,Hull,Length,Wad,Primer,Gauge
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -24,23 +24,23 @@ class IndexView(generic.ListView):
 		"""Get everything needed for index page"""
 		retn={}
 
-		gaugefilter      = self.intmap( 'gauge',      Gauge )
-		wadfilter        = self.intmap( 'wad',        Wad )
-		hullfilter       = self.intmap( 'hull',       Hull )
-		hulllengthfilter = self.intmap( 'hulllength', HullLength )
-		primerfilter     = self.intmap( 'primer',     Primer )
-		powderfilter     = self.intmap( 'powder',     Powder )
+		gaugefilter  = self.intmap( 'gauge',  Gauge )
+		wadfilter    = self.intmap( 'wad',    Wad )
+		hullfilter   = self.intmap( 'hull',   Hull )
+		lengthfilter = self.intmap( 'length', Length )
+		primerfilter = self.intmap( 'primer', Primer )
+		powderfilter = self.intmap( 'powder', Powder )
 
-		retn['Gauge']      = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
-		retn['Hull']       = Hull.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','gauge')
-		retn['HullLength'] = HullLength.objects.all()
-		retn['Primer']     = Primer.objects.order_by('manufacturer')
-		retn['Powder']     = Powder.objects.order_by('manufacturer','name')
-		retn['Wad']        = Wad.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','name')
-		retn['Recipe']     = Recipe.objects.filter(
+		retn['Gauge']  = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
+		retn['Hull']   = Hull.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','gauge')
+		retn['Length'] = Length.objects.all()
+		retn['Primer'] = Primer.objects.order_by('manufacturer')
+		retn['Powder'] = Powder.objects.order_by('manufacturer','name')
+		retn['Wad']    = Wad.objects.filter(gauge__in=gaugefilter).order_by('manufacturer','name')
+		retn['Recipe'] = Recipe.objects.filter(
 			hull__gauge__in=gaugefilter,
 			hull__in=hullfilter,
-			hullLength__in=hulllengthfilter,
+			length__in=lengthfilter,
 			primer__in=primerfilter,
 			powder__in=powderfilter,
 			wad__in=wadfilter
