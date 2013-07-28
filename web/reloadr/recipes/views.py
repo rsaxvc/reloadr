@@ -8,8 +8,6 @@ from django.utils import timezone
 
 from recipes.models import Powder,Recipe,Hull,HullLength,Wad,Primer,Gauge
 
-import operator
-
 # Create your views here.
 class IndexView(generic.ListView):
 	template_name = 'recipes/index.html'
