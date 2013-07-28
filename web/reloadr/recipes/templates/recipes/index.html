@@ -88,10 +88,11 @@
 	<table border="1">
 	<tr>
 		<td>Gauge</td>
-		<td>Powder</td>
+		<td>Hull</td>
 		<td>Wad</td>
 		<td>ShotType</td>
 		<td>ShotWeight</td>
+		<td>Powder</td>
 		<td>Primer</td>
 		<td>estPressure</td>
 		<td>estVelocity</td>
@@ -100,10 +101,11 @@
 	{% for recipe in table.Recipe.all %}
 		<tr>
 			<td>{{ recipe.gauge }}</td>
-			<td>{{ recipe.powder }}</td>
+			<td>{{ recipe.hull }}</td>
 			<td>{{ recipe.wad }}</td>
 			<td>{{ recipe.shotType }}</td>
 			<td>{{ recipe.shotWeight }}</td>
+			<td>{{ recipe.powder }}</td>
 			<td>{{ recipe.primer }}</td>
 			<td>{{ recipe.estPressure }}</td>
 			<td>{{ recipe.estVelocity }}</td>
