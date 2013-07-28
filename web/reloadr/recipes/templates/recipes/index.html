@@ -3,8 +3,8 @@
 		<td align="center">Gauge</td>
 		<td align="center">HullLength</td>
 		<td align="center">Hulls</td>
-		<td align="center">Powder</td>
 		<td align="center">Wads</td>
+		<td align="center">Powder</td>
 		<td align="center">Primer</td>	
 	</tr>
 	<tr><form method=get action="/recipes/"><td>
@@ -45,18 +45,6 @@
 
 		</td><td>
 
-		{% if table.Powder %}
-		<select multiple size=10 name=powder>
-			{% for powder in table.Powder.all %}
-				<option value="{{powder.id}}">{{powder}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
-			No Powders Available
-		{% endif %}
-
-		</td><td>
-
 		{% if table.Wad %}
 		<select multiple size=10 name=wad>
 			{% for wad in table.Wad.all %}
@@ -65,6 +53,18 @@
 		</select>
 		{% else %}
 			No Wads Available
+		{% endif %}
+
+		</td><td>
+
+		{% if table.Powder %}
+		<select multiple size=10 name=powder>
+			{% for powder in table.Powder.all %}
+				<option value="{{powder.id}}">{{powder}}</option>
+			{% endfor %}
+		</select>
+		{% else %}
+			No Powders Available
 		{% endif %}
 
 		</td><td>
