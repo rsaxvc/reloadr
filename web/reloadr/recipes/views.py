@@ -41,8 +41,8 @@ class IndexView(generic.ListView):
 			hull__in=hullfilter,
 			hullLength__in=hulllengthfilter,
 			primer__in=primerfilter,
-			powder__in=powderfilter
-			wad__in=wadfilter,
+			powder__in=powderfilter,
+			wad__in=wadfilter
 			).order_by('gauge','powder')
 
 		return retn;
