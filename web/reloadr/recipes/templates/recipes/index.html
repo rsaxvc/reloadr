@@ -93,9 +93,10 @@
 		<td>ShotType</td>
 		<td>ShotWeight</td>
 		<td>Powder</td>
+		<td>Grains</td>
 		<td>Primer</td>
-		<td>estPressure</td>
-		<td>estVelocity</td>
+		<td>estPressure(PSI)</td>
+		<td>estVelocity(FPS)</td>
 	</td>
 
 	{% for recipe in table.Recipe.all %}
@@ -106,6 +107,7 @@
 			<td>{{ recipe.shotType }}</td>
 			<td>{{ recipe.shotWeight }}</td>
 			<td>{{ recipe.powder }}</td>
+			<td>{{ recipe.powderWeight }}</td>
 			<td>{{ recipe.primer }}</td>
 			<td>{{ recipe.estPressure }}</td>
 			<td>{{ recipe.estVelocity }}</td>
