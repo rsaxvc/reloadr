@@ -9,7 +9,7 @@ class Manufacturer(models.Model):
 class Gauge(models.Model):
 	size = models.CharField(max_length=20)
 	def __unicode__(self):
-		return str(self.size) + ' Gauge'
+		return str(self.size)
 
 class Primer(models.Model):
 	manufacturer = models.ForeignKey(Manufacturer)
