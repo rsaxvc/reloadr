@@ -1,3 +1,14 @@
+<html>
+	<head>
+		<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.tablesorter.min.js"></script>
+		<script type="text/javascript" id="js">$(document).ready(function() {
+			$("table").tablesorter();
+		});</script>
+
+	</head>
+	<body>
+
 <table>
 	<thead>
 		<tr>
@@ -89,7 +100,7 @@
 </table>
 
 {% if table.Recipe %}
-<table border="1" id="recipes">
+<table border="1">
 	<thead>
 		<tr>
 			<th>Gauge</th>
@@ -126,3 +137,6 @@
 {% endif %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	</body>
+</html>
