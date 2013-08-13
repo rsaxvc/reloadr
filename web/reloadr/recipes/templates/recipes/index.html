@@ -1,104 +1,110 @@
 <table>
-	<tr>
-		<th align="center">Gauge</th>
-		<th align="center">Length</th>
-		<th align="center">Hulls</th>
-		<th align="center">Wads</th>
-		<th align="center">Powder</th>
-		<th align="center">Primer</th>	
-	</tr>
-	<tr><form method=get action="/recipes/"><td>
+	<thead>
+		<tr>
+			<th align="center">Gauge</th>
+			<th align="center">Length</th>
+			<th align="center">Hulls</th>
+			<th align="center">Wads</th>
+			<th align="center">Powder</th>
+			<th align="center">Primer</th>	
+		</tr>
+	</thead>
+	<tbody>
+		<tr><form method=get action="/recipes/"><td>
 
-		{% if table.Gauge %}
-		<select multiple size=10 name=gauge>
-			{% for gauge in table.Gauge.all %}
-				<option value="{{gauge.id}}">{{gauge}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
-			No Gauges Available
-		{% endif %}
+			{% if table.Gauge %}
+			<select multiple size=10 name=gauge>
+				{% for gauge in table.Gauge.all %}
+					<option value="{{gauge.id}}">{{gauge}}</option>
+				{% endfor %}
+			</select>
+			{% else %}
+				No Gauges Available
+			{% endif %}
 
-		</td><td>
+			</td><td>
 
-		{% if table.Length %}
-		<select multiple size=10 name=length>
-			{% for length in table.Length.all %}
-				<option value="{{length.id}}">{{length}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
-			No Lengths Available
-		{% endif %}
+			{% if table.Length %}
+			<select multiple size=10 name=length>
+				{% for length in table.Length.all %}
+					<option value="{{length.id}}">{{length}}</option>
+				{% endfor %}
+			</select>
+			{% else %}
+				No Lengths Available
+			{% endif %}
 
-		</td><td>
+			</td><td>
 
-		{% if table.Hull %}
-		<select multiple size=10 name=hull>
-			{% for hull in table.Hull.all %}
-				<option value="{{hull.id}}">{{hull}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
+			{% if table.Hull %}
+			<select multiple size=10 name=hull>
+				{% for hull in table.Hull.all %}
+					<option value="{{hull.id}}">{{hull}}</option>
+				{% endfor %}
+			</select>
+			{% else %}
 			No Hulls Available
-		{% endif %}
+			{% endif %}
+
+			</td><td>
+
+			{% if table.Wad %}
+			<select multiple size=10 name=wad>
+				{% for wad in table.Wad.all %}
+					<option value="{{wad.id}}">{{wad}}</option>
+				{% endfor %}
+			</select>
+			{% else %}
+				No Wads Available
+			{% endif %}
+
+			</td><td>
+
+			{% if table.Powder %}
+			<select multiple size=10 name=powder>
+				{% for powder in table.Powder.all %}
+					<option value="{{powder.id}}">{{powder}}</option>
+				{% endfor %}
+			</select>
+			{% else %}
+				No Powders Available
+			{% endif %}
+
+			</td><td>
+
+			{% if table.Primer %}
+			<select multiple size=10 name=primer>
+				{% for primer in table.Primer.all %}
+					<option value="{{primer.id}}">{{primer}}</option>
+				{% endfor %}
+			</select>
+			{% else %}
+				No Primers Available
+			{% endif %}
 
 		</td><td>
-
-		{% if table.Wad %}
-		<select multiple size=10 name=wad>
-			{% for wad in table.Wad.all %}
-				<option value="{{wad.id}}">{{wad}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
-			No Wads Available
-		{% endif %}
-
-		</td><td>
-
-		{% if table.Powder %}
-		<select multiple size=10 name=powder>
-			{% for powder in table.Powder.all %}
-				<option value="{{powder.id}}">{{powder}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
-			No Powders Available
-		{% endif %}
-
-		</td><td>
-
-		{% if table.Primer %}
-		<select multiple size=10 name=primer>
-			{% for primer in table.Primer.all %}
-				<option value="{{primer.id}}">{{primer}}</option>
-			{% endfor %}
-		</select>
-		{% else %}
-			No Primers Available
-		{% endif %}
-
-	</td><td>
-		<td align=center><input type=submit name="btnSrch" value="Search" /></td>
-	</td></form></tr>
+			<td align=center><input type=submit name="btnSrch" value="Search" /></td>
+		</td></form></tr>
+	</tbody>
 </table>
 
 {% if table.Recipe %}
-	<table border="1">
-	<tr>
-		<th>Gauge</th>
-		<th>Hull</th>
-		<th>Wad</th>
-		<th>ShotType</th>
-		<th>ShotWeight</th>
-		<th>Powder</th>
-		<th>Grains</th>
-		<th>Primer</th>
-		<th>estPressure(PSI)</th>
-		<th>estVelocity(FPS)</th>
-	</tr>
-
+<table border="1">
+	<thead>
+		<tr>
+			<th>Gauge</th>
+			<th>Hull</th>
+			<th>Wad</th>
+			<th>ShotType</th>
+			<th>ShotWeight</th>
+			<th>Powder</th>
+			<th>Grains</th>
+			<th>Primer</th>
+			<th>estPressure(PSI)</th>
+			<th>estVelocity(FPS)</th>
+		</tr>
+	</thead>
+	<tbody>
 	{% for recipe in table.Recipe.all %}
 		<tr>
 			<td>{{ recipe.gauge }}</td>
@@ -113,10 +119,10 @@
 			<td>{{ recipe.estVelocity }}</td>
 		</tr>
 	{% endfor %}
-	</table>
+	</tbody>
+</table>
 {% else %}
-	<p>No recipes are available.</p>
+<p>No recipes are available.</p>
 {% endif %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
