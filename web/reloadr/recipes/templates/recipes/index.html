@@ -1,11 +1,11 @@
 <table>
 	<tr>
-		<td align="center">Gauge</td>
-		<td align="center">Length</td>
-		<td align="center">Hulls</td>
-		<td align="center">Wads</td>
-		<td align="center">Powder</td>
-		<td align="center">Primer</td>	
+		<th align="center">Gauge</th>
+		<th align="center">Length</th>
+		<th align="center">Hulls</th>
+		<th align="center">Wads</th>
+		<th align="center">Powder</th>
+		<th align="center">Primer</th>	
 	</tr>
 	<tr><form method=get action="/recipes/"><td>
 
@@ -87,17 +87,17 @@
 {% if table.Recipe %}
 	<table border="1">
 	<tr>
-		<td>Gauge</td>
-		<td>Hull</td>
-		<td>Wad</td>
-		<td>ShotType</td>
-		<td>ShotWeight</td>
-		<td>Powder</td>
-		<td>Grains</td>
-		<td>Primer</td>
-		<td>estPressure(PSI)</td>
-		<td>estVelocity(FPS)</td>
-	</td>
+		<th>Gauge</th>
+		<th>Hull</th>
+		<th>Wad</th>
+		<th>ShotType</th>
+		<th>ShotWeight</th>
+		<th>Powder</th>
+		<th>Grains</th>
+		<th>Primer</th>
+		<th>estPressure(PSI)</th>
+		<th>estVelocity(FPS)</th>
+	</tr>
 
 	{% for recipe in table.Recipe.all %}
 		<tr>
