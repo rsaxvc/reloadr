@@ -3,8 +3,12 @@
 		<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="/static/js/jquery.tablesorter.min.js"></script>
 		<script type="text/javascript" id="js">$(document).ready(function() {
-			$("table").tablesorter();
+			$("#recipes").tablesorter();
 		});</script>
+
+	<style type="text/css">
+	#recipes th { cursor: pointer; }
+	</style>
 
 	</head>
 	<body>
@@ -100,7 +104,7 @@
 </table>
 
 {% if table.Recipe %}
-<table border="1">
+<table border="1" id="recipes">
 	<thead>
 		<tr>
 			<th>Gauge</th>
