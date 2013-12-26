@@ -84,6 +84,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
+# WARNING - this is a development key that is checked into github
 SECRET_KEY = ')#ugc9xupm-6ng_o3ti85as0)^uvmwiw@upi%^58vib8r7#i%8'
 
 # List of callables that know how to import templates from various sources.
