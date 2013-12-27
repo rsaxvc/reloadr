@@ -10,7 +10,11 @@
 		});</script>
 
 		<style type="text/css">
-		#recipes th { cursor: pointer; }
+		#recipes th
+			{
+			cursor: pointer;
+			text-align: center;
+			}
 		</style>
 	</head>
 	<body>
@@ -18,12 +22,12 @@
 <table>
 	<thead>
 		<tr>
-			<th align="center">Gauge</th>
-			<th align="center">Length</th>
-			<th align="center">Hulls</th>
-			<th align="center">Wads</th>
-			<th align="center">Powder</th>
-			<th align="center">Primer</th>	
+			<th>Gauge</th>
+			<th>Length</th>
+			<th>Hulls</th>
+			<th>Wads</th>
+			<th>Powder</th>
+			<th>Primer</th>	
 		</tr>
 	</thead>
 	<tbody>
@@ -100,7 +104,7 @@
 			{% endif %}
 
 		</td><td>
-			<td align=center><input type=submit name="btnSrch" value="Search" /></td>
+			<td><input type="submit" name="btnSrch" value="Search" /></td>
 		</td></form></tr>
 	</tbody>
 </table>
