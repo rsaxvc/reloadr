@@ -33,7 +33,7 @@ class IndexView(generic.ListView):
 
 		retn['Gauge']  = Gauge.objects.filter(id__in=gaugefilter).order_by('size')
 		retn['Hull']   = Hull.objects.filter(gauge__in=gaugefilter).order_by('manufacturer__name','gauge')
-		retn['Length'] = Length.objects.all()
+		retn['Length'] = Length.objects.order_by('length')
 		retn['Primer'] = Primer.objects.order_by('manufacturer__name')
 		retn['Powder'] = Powder.objects.order_by('manufacturer__name','name')
 		retn['Wad']    = Wad.objects.filter(gauge__in=gaugefilter).order_by('manufacturer__name','name')
