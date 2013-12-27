@@ -19,7 +19,7 @@
 	</head>
 	<body>
 
-<table>
+<form method=get action="/recipes/"><table>
 	<thead>
 		<tr>
 			<th>Gauge</th>
@@ -27,11 +27,12 @@
 			<th>Hulls</th>
 			<th>Wads</th>
 			<th>Powder</th>
-			<th>Primer</th>	
+			<th>Primer</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr><form method=get action="/recipes/"><td>
+		<tr><td>
 
 			{% if table.Gauge %}
 			<select multiple size=10 name=gauge>
@@ -103,11 +104,11 @@
 				No Primers Available
 			{% endif %}
 
-		</td><td>
-			<td><input type="submit" name="btnSrch" value="Search" /></td>
-		</td></form></tr>
+		</td>
+		<td><input type="submit" name="btnSrch" value="Search" /></td>
+		</tr>
 	</tbody>
-</table>
+</table></form>
 
 {% if table.Recipe %}
 <table border="1" id="recipes">
