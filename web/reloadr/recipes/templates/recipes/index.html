@@ -127,6 +127,7 @@ Disclaimer: this website is not yet finished and as-such may be populated by tes
 			<th>Primer</th>
 			<th>estPressure(PSI)</th>
 			<th>estVelocity(FPS)</th>
+			<th>QuickSheet</th>
 			<th>Link</th>
 		</tr>
 	</thead>
@@ -143,6 +144,7 @@ Disclaimer: this website is not yet finished and as-such may be populated by tes
 			<td>{{ recipe.primer }}</td>
 			<td>{{ recipe.estPressure }}</td>
 			<td>{{ recipe.estVelocity }}</td>
+			<td><a href="{{recipe.id}}">QuickSheet</a></td>
 			<td><a href="{{recipe.url}}">link</a></td>
 		</tr>
 	{% endfor %}
